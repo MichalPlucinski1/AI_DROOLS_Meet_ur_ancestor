@@ -16,7 +16,7 @@ rule "30 min"
 		Knowledge(answer =="30")
 	then
 		insert(new GUI_state("You want to see things in B&W?",
-								new String[] {"yes","no"}));
+								new String[] {"yes","no", "maybe"}));
 end
 
 
