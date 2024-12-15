@@ -1,0 +1,307 @@
+//created on: 2020-12-12
+package com.sample
+
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+
+
+global JFrame frame;
+
+
+
+
+// SCIEZKA 30:
+rule "30 min"
+	when
+		Knowledge(answer =="30")
+	then
+		insert(new GUI_state("You want to see things in B&W?",
+								new String[] {"yes","no"}));
+end
+
+
+rule "Not B&W"
+	when
+		Knowledge(getQuestion() == "You want to see things in B&W?", answer == "no")
+	then
+		insert(new GUI_state("Animated?", 
+								new String[] {"yes","no"}));
+end
+
+rule "Animated"
+	when
+		Knowledge(getQuestion() == "Animated?", answer == "yes")
+	then
+		insert(new GUI_state("Dick and fart jokes, with random musical interludes?", 
+								new String[] {"yes","no"}));
+end
+
+rule "Not dick and fart jokes"
+	when
+		Knowledge(getQuestion() == "Dick and fart jokes, with random musical interludes?", answer == "no")
+	then
+		insert(new GUI_state("Gratuitous cleavage and up-skirt shots?", 
+								new String[] {"yes","no"}));
+end
+
+rule "Not gratuitous cleavage"
+	when
+		Knowledge(getQuestion() == "Gratuitous cleavage and up-skirt shots?", answer == "no")
+	then
+		insert(new GUI_state("A little more childish or a little more mature?", 
+								new String[] {"Mature","Childish"}));
+end
+
+rule "Childish"
+	when
+		Knowledge(getQuestion() == "A little more childish or a little more mature?", answer == "Childish")
+	then
+		insert(new GUI_state("World-class social commentary?",
+								new String[] {"yes","no"}));
+end
+
+rule "Mature"
+	when
+		Knowledge(getQuestion() == "A little more childish or a little more mature?", answer == "Mature")
+	then
+		insert(new GUI_state("Do you want to watch the most f***ed up show on Netflix?",
+								new String[] {"yes","no"}));
+end
+
+rule "Not Animated"
+	when
+		Knowledge(getQuestion() == "Animated?", answer == "no")
+	then
+		insert(new GUI_state("Do you want to remember laughter?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Wants to ramember laughter"
+	when
+		Knowledge(getQuestion() == "Do you want to remember laughter?", answer == "yes")
+	then
+		insert(new GUI_state("Do you want to do as little thinking as possible?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Little thinking"
+	when
+		Knowledge(getQuestion() == "Do you want to do as little thinking as possible?", answer == "yes")
+	then
+		insert(new GUI_state("Skit show?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Skit show"
+	when
+		Knowledge(getQuestion() == "Skit show?", answer == "yes")
+	then
+		insert(new GUI_state("Do you like things to get a little odd, a little quirky?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Not skit show"
+	when
+		Knowledge(getQuestion() == "Skit show?", answer == "no")
+	then
+		insert(new GUI_state("Are you really into weed and liquor?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Into weed and liquor"
+	when
+		Knowledge(getQuestion() == "Are you really into weed and liquor?", answer == "yes")
+	then
+		insert(new GUI_state("Can you hear the sh*t hawks circling in sh*t winds?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Not into weed and liquor"
+	when
+		Knowledge(getQuestion() == "Are you really into weed and liquor?", answer == "no")
+	then
+		insert(new GUI_state("Are you really into football?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Not into football"
+	when
+		Knowledge(getQuestion() == "Are you really into football?", answer == "no")
+	then
+		insert(new GUI_state("Satire or Insanity?",
+								new String[] {"Insanity", "Satire"}));
+end
+
+rule "Not little thinking"
+	when
+		Knowledge(getQuestion() == "Do you want to do as little thinking as possible?", answer == "no")
+	then
+		insert(new GUI_state("Do you dig British humour?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Not British humour"
+	when
+		Knowledge(getQuestion() == "Do you dig British humour?", answer == "no")
+	then
+		insert(new GUI_state("Do you reckon to be a bit of sophisticate?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Not a bit of spohisticate"
+	when
+		Knowledge(getQuestion() == "Do you reckon to be a bit of sophisticate?", answer == "no")
+	then
+		insert(new GUI_state("Do you want a show with astounding rewatchability?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Doesnt want show with astounding rewatchability"
+	when
+		Knowledge(getQuestion() == "Do you want a show with astounding rewatchability?", answer == "no")
+	then
+		insert(new GUI_state("Do you find awkward situations funny?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Doesnt want to ramember laughter"
+	when
+		Knowledge(getQuestion() == "Do you want to remember laughter?", answer == "no")
+	then
+		insert(new GUI_state("Do you like the paranormal?",
+								new String[] {"yes", "no"}));
+end
+
+rule "Doesnt like paranormal"
+	when
+		Knowledge(getQuestion() == "Do you like the paranormal?", answer == "no")
+	then
+		insert(new GUI_state("Mystery or space?",
+								new String[] {"Mystery", "Space"}));
+end
+
+rule "Mystery over Space"
+	when
+		Knowledge(getQuestion() == "Mystery or space?", answer == "Mystery")
+	then
+		insert(new GUI_state("Are you about the solution, or the process?",
+								new String[] {"Process", "Solution"}));
+end
+
+rule "Space over Mystery"
+	when
+		Knowledge(getQuestion() == "Mystery or space?", answer == "Space")
+	then
+		insert(new GUI_state("Are you extremely nostalgic?",
+								new String[] {"yes", "no"}));
+end
+
+//SCIEZKA 60:
+rule "60 min"
+	when
+		Knowledge(answer =="60")
+	then
+		insert(new GUI_state("Coming of age story line?",new String[] {"yes","no"}));
+end
+
+rule "Not age story line"
+	when
+		Knowledge(getQuestion() == "Coming of age story line?", answer == "no")
+	then
+		insert(new GUI_state("Crime drama?",new String[] {"yes","no"}));
+end
+
+rule "Crime drama"
+	when
+		Knowledge(getQuestion() == "Crime drama?", answer == "yes")
+	then
+		insert(new GUI_state("Classic mystery or thriller/cliffhanger?",new String[] {"Thriller","Mystery"}));
+end
+
+
+rule "Thriller/cliffhanger"
+	when
+		Knowledge(getQuestion() == "Classic mystery or thriller/cliffhanger?", answer == "Thriller")
+	then
+		insert(new GUI_state("Do you want the most intense show ever made?",new String[] {"yes","no"}));
+end
+
+
+
+rule "Not the most intense show ever made"
+	when
+		Knowledge(getQuestion() == "Do you want the most intense show ever made?", answer == "no")
+	then
+		insert(new GUI_state("Focus on the good guys or bad guys?",new String[] {"Good","Bad"}));
+end
+
+rule "Not crime drama"
+	when
+		Knowledge(getQuestion() == "Crime drama?", answer == "no")
+	then
+		insert(new GUI_state("Escape with some fantasy/sci-fi?",new String[] {"yes","no"}));
+end
+
+
+rule "Escape with some fantasy/sci-fi"
+	when
+		Knowledge(getQuestion() == "Escape with some fantasy/sci-fi?", answer == "yes")
+	then
+		insert(new GUI_state("Head to outer space?",new String[] {"yes","no"}));
+end
+
+rule "Head to outer space"
+	when
+		Knowledge(getQuestion() == "Head to outer space?", answer == "yes")
+	then
+		insert(new GUI_state("Explore or War?",new String[] {"Explore","War"}));
+end
+
+
+rule "Not head to outer space"
+	when
+		Knowledge(getQuestion() == "Head to outer space?", answer == "no")
+	then
+		insert(new GUI_state("Less science, more fiction?",new String[] {"yes","no"}));
+end
+
+
+rule "Less science, more fiction"
+	when
+		Knowledge(getQuestion() == "Less science, more fiction?", answer == "yes")
+	then
+		insert(new GUI_state("Braiiiiiiiiiins?",new String[] {"yes","no"}));
+end
+
+rule "Not Escape with some fantasy/sci-fi"
+	when
+		Knowledge(getQuestion() == "Escape with some fantasy/sci-fi?", answer == "no")
+	then
+		insert(new GUI_state("Politics and fast-talking?",new String[] {"yes","no"}));
+end
+
+rule "Politics and fast-talking"
+	when
+		Knowledge(getQuestion() == "Politics and fast-talking?", answer == "yes")
+	then
+		insert(new GUI_state("Kevin, Verbal Kent, Spacey?",new String[] {"yes","no"}));
+end
+
+
+rule "No Politics and fast-talking"
+	when
+		Knowledge(getQuestion() == "Politics and fast-talking?", answer == "no")
+	then
+		insert(new GUI_state("Steeped in history?",new String[] {"yes","no"}));
+end
+
+rule "Not Steeped in history"
+	when
+		Knowledge(getQuestion() == "Steeped in history?", answer == "no")
+	then
+		insert(new GUI_state("Do you like things to be a little strange?",new String[] {"yes","no"}));
+end
+
+
+
+

@@ -1,0 +1,82 @@
+
+package com.sample
+
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+import java.awt.event.WindowEvent;
+
+global JFrame frame;
+
+
+
+declare GUI_state
+	question : String
+	answers : String[]
+end
+
+declare Knowledge
+	question : String
+	answer : String
+end
+
+declare Result
+	result : String
+end
+
+
+
+rule "init"
+	when
+	then
+	insert(new GUI_state("30 or 60 minutes?",new String[] {"60","30"}));
+end
+
+rule "ask"
+	when 
+		g:GUI_state(p:question)
+	then
+		String n = show_question(frame,g);
+		insert(new Knowledge(g.getQuestion(),n));
+		retract(g);
+end
+
+rule "result"
+	when
+		w : Result()
+	then
+		show_result(frame,w);
+end
+
+
+
+function String show_question(JFrame frame,GUI_state s)
+{
+	try{
+		return s.getAnswers()[JOptionPane.showOptionDialog(frame,
+											 s.getQuestion(),
+											 "Question",
+											 JOptionPane.YES_NO_OPTION,
+											 JOptionPane.QUESTION_MESSAGE,
+											 null,
+											 s.getAnswers(),
+											 s.getAnswers()[0])];
+	}
+	catch(Throwable ex){
+		JOptionPane.showMessageDialog(frame,
+									 "Something went wrong, turning off..",
+									 "error",
+									 JOptionPane.ERROR_MESSAGE);
+		System.exit(0);
+		return "-1";
+	}
+}
+
+function void show_result(JFrame frame,Result w)
+{
+	JOptionPane.showMessageDialog(frame,
+									 w.getResult(),
+									 "Result",
+									 JOptionPane.INFORMATION_MESSAGE);
+	System.exit(0);
+}
+

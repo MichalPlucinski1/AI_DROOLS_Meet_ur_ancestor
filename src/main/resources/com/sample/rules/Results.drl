@@ -1,0 +1,292 @@
+//created on: 2020-12-12
+package com.sample
+
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+
+global JFrame frame;
+
+
+
+//Sciezka 30:
+rule "B&W"
+	when
+		Knowledge(getQuestion() == "You want to see things in B&W?", answer == "yes")
+	then
+		insert(new Result("The Twilight Zone"));
+end
+
+
+rule "Dick and fart jokes"
+	when
+		Knowledge(getQuestion() == "Dick and fart jokes, with random musical interludes?", answer == "yes")
+	then
+		insert(new Result("Family Guy"));
+end
+
+rule "Gratuitous cleavage"
+	when
+		Knowledge(getQuestion() == "Gratuitous cleavage and up-skirt shots?", answer == "yes")
+	then
+		insert(new Result("Highschool of the Dead"));
+end
+
+rule "World-class social commentary"
+	when
+		Knowledge(getQuestion() == "World-class social commentary?", answer == "yes")
+	then
+		insert(new Result("South Park"));
+end
+
+rule "Not wrld-class social commentary"
+	when
+		Knowledge(getQuestion() == "World-class social commentary?", answer == "no")
+	then
+		insert(new Result("Futurama"));
+end
+
+rule "The most f***ed up"
+	when
+		Knowledge(getQuestion() == "Do you want to watch the most f***ed up show on Netflix?", answer == "yes")
+	then
+		insert(new Result("Ren & Stimpy Show"));
+end
+
+rule "Not the most f***ed up"
+	when
+		Knowledge(getQuestion() == "Do you want to watch the most f***ed up show on Netflix?", answer == "no")
+	then
+		insert(new Result("Archer"));
+end
+
+rule "A little odd, a little quirky"
+	when
+		Knowledge(getQuestion() == "Do you like things to get a little odd, a little quirky?", answer == "yes")
+	then
+		insert(new Result("The Kids in the Hall"));
+end
+
+rule "Not a little odd, a little quirky"
+	when
+		Knowledge(getQuestion() == "Do you like things to get a little odd, a little quirky?", answer == "no")
+	then
+		insert(new Result("Chappelle's Show"));
+end
+
+rule "Sh*t hawks"
+	when
+		Knowledge(getQuestion() == "Can you hear the sh*t hawks circling in sh*t winds?", answer == "yes")
+	then
+		insert(new Result("Trailer Park Boys"));
+end
+
+rule "Not sh*t hawks"
+	when
+		Knowledge(getQuestion() == "Can you hear the sh*t hawks circling in sh*t winds?", answer == "no")
+	then
+		insert(new Result("Workaholics"));
+end
+
+rule "Into football"
+	when
+		Knowledge(getQuestion() == "Are you really into football?", answer == "yes")
+	then
+		insert(new Result("The League"));
+end
+
+rule "Satire over Insanity"
+	when
+		Knowledge(getQuestion() == "Satire or Insanity?", answer == "Satire")
+	then
+		insert(new Result("Parks and Recreation"));
+end
+
+rule "Insanity over Satire"
+	when
+		Knowledge(getQuestion() == "Satire or Insanity?", answer == "Insanity")
+	then
+		insert(new Result("It's Always Sunny in Philadelphia"));
+end
+
+rule "Dig British humour"
+	when
+		Knowledge(getQuestion() == "Do you dig British humour?", answer == "yes")
+	then
+		insert(new Result("Fawity Towers"));
+end
+
+rule "A bit of spohisticate"
+	when
+		Knowledge(getQuestion() == "Do you reckon to be a bit of sophisticate?", answer == "yes")
+	then
+		insert(new Result("Frasier"));
+end
+
+rule "wants show with astounding rewatchability"
+	when
+		Knowledge(getQuestion() == "Do you want a show with astounding rewatchability?", answer == "yes")
+	then
+		insert(new Result("Arrested Development"));
+end
+
+rule "Finds awkward situations funny"
+	when
+		Knowledge(getQuestion() == "Do you find awkward situations funny?", answer == "yes")
+	then
+		insert(new Result("Louie"));
+end
+
+rule "Doesnt find awkward situations funny"
+	when
+		Knowledge(getQuestion() == "Do you find awkward situations funny?", answer == "no")
+	then
+		insert(new Result("Cheers"));
+end
+
+rule "Likes paranormal"
+	when
+		Knowledge(getQuestion() == "Do you like the paranormal?", answer == "yes")
+	then
+		insert(new Result("The X-Files"));
+end
+
+rule "Process over Solution"
+	when
+		Knowledge(getQuestion() == "Are you about the solution, or the process?", answer == "Process")
+	then
+		insert(new Result("Columbo"));
+end
+
+rule "Solution over Process"
+	when
+		Knowledge(getQuestion() == "Are you about the solution, or the process?", answer == "Solution")
+	then
+		insert(new Result("The Rockford Files"));
+end
+
+rule "Nostalgic"
+	when
+		Knowledge(getQuestion() == "Are you extremely nostalgic?", answer == "yes")
+	then
+		insert(new Result("Star Trek"));
+end
+
+rule "Not nostalgic"
+	when
+		Knowledge(getQuestion() == "Are you extremely nostalgic?", answer == "no")
+	then
+		insert(new Result("Firefly"));
+end
+
+//Sciezka 60:
+rule "Coming of age story line"
+	when
+		Knowledge(getQuestion() == "Coming of age story line?", answer == "yes")
+	then
+		insert(new Result("Freaks and Geeks"));
+end
+
+rule "Classic mystery"
+	when
+		Knowledge(getQuestion() == "Classic mystery or thriller/cliffhanger?", answer == "Mystery")
+	then
+		insert(new Result("Sherlock (BBC)"));
+end
+
+
+
+rule "The most intense show ever made"
+	when
+		Knowledge(getQuestion() == "Do you want the most intense show ever made?", answer == "yes")
+	then
+		insert(new Result("Breaking Bad"));
+end
+
+
+rule "Focus on the Good guys"
+	when
+		Knowledge(getQuestion() == "Focus on the good guys or bad guys?", answer == "Good")
+	then
+	insert(new Result("Law & Orders"));
+end
+	
+	
+rule "Focus on the Bad guys"
+	when
+		Knowledge(getQuestion() == "Focus on the good guys or bad guys?", answer == "Bad")
+	then
+	insert(new Result("Sons of Anarchy"));
+end
+
+rule "Explore"
+	when
+		Knowledge(getQuestion() == "Explore or War?", answer == "Explore")
+	then
+		insert(new Result("Star Trek: TNG"));
+end
+
+rule "War"
+	when
+		Knowledge(getQuestion() == "Explore or War?", answer == "War")
+	then
+		insert(new Result("Battlestar Galactica"));
+end
+
+rule "More science, less fiction"
+	when
+		Knowledge(getQuestion() == "Less science, more fiction?", answer == "no")
+	then
+		insert(new Result("Silders"));
+end
+
+
+rule "Braiiiiiiiiiins"
+	when
+		Knowledge(getQuestion() == "Braiiiiiiiiiins?", answer == "yes")
+	then
+		insert(new Result("The Walking Dead"));
+end
+
+
+rule "No Braiiiiiiiiiins"
+	when
+		Knowledge(getQuestion() == "Braiiiiiiiiiins?", answer == "no")
+	then
+		insert(new Result("Lost"));
+end
+
+rule "Kevin, Verbal Kent, Spacey"
+	when
+		Knowledge(getQuestion() == "Kevin, Verbal Kent, Spacey?", answer == "yes")
+	then
+		insert(new Result("The House of Cards"));
+end
+
+rule "Not Kevin, Verbal Kent, Spacey"
+	when
+		Knowledge(getQuestion() == "Kevin, Verbal Kent, Spacey?", answer == "no")
+	then
+		insert(new Result("The West Wing"));
+end
+
+rule "Steeped in history"
+	when
+		Knowledge(getQuestion() == "Steeped in history?", answer == "yes")
+	then
+		insert(new Result("The Tudors"));
+end
+
+rule "Like things to be a little strange"
+	when
+		Knowledge(getQuestion() == "Do you like things to be a little strange?", answer == "yes")
+	then
+		insert(new Result("Twin Peaks"));
+end
+
+rule "Do not like things to be a little strange"
+	when
+		Knowledge(getQuestion() == "Do you like things to be a little strange?", answer == "no")
+	then
+		insert(new Result("Mad Men"));
+end
+
