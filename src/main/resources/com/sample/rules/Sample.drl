@@ -4,17 +4,16 @@ package com.sample
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import java.awt.event.WindowEvent;
+import com.sample.UI;
 
-global JFrame frame;
+global UI ui;
 
-
-
-declare GUI_state
+declare Knowledge
 	question : String
 	answers : String[]
 end
 
-declare Knowledge
+declare Response
 	question : String
 	answer : String
 end
@@ -24,59 +23,35 @@ declare Result
 end
 
 
-
+// Initialize program, show starting screen with begin button
 rule "init"
 	when
 	then
-	insert(new GUI_state("30 or 60 minutes?",new String[] {"60","30"}));
+		Knowledge k = new Knowledge("My favourite thing to do is", new String[]{"SWIM", "RUN", "MATE", "EAT", "SLEEP", "I don't understand this chart"});
+		
+		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+		
+		System.out.println(res);
+		
+		Response r = new Response(k.getQuestion(), res);
+		
+		insert(r);
+		 
+		
 end
 
-rule "ask"
+rule "Q1"
 	when 
-		g:GUI_state(p:question)
+		Response(question == "My favourite thing to do is", answer == "MATE")
 	then
-		String n = show_question(frame,g);
-		insert(new Knowledge(g.getQuestion(),n));
-		retract(g);
+		System.out.println("dckxdkmcxm");
+		Knowledge k = new Knowledge("Hit it & Quit it ?", new String[]{"Yes", "No"});
+		
+		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+		
+		Response r = new Response(k.getQuestion(), res);
+		
+		insert(r);
 end
 
-rule "result"
-	when
-		w : Result()
-	then
-		show_result(frame,w);
-end
-
-
-
-function String show_question(JFrame frame,GUI_state s)
-{
-	try{
-		return s.getAnswers()[JOptionPane.showOptionDialog(frame,
-											 s.getQuestion(),
-											 "Question",
-											 JOptionPane.YES_NO_OPTION,
-											 JOptionPane.QUESTION_MESSAGE,
-											 null,
-											 s.getAnswers(),
-											 s.getAnswers()[0])];
-	}
-	catch(Throwable ex){
-		JOptionPane.showMessageDialog(frame,
-									 "Something went wrong, turning off..",
-									 "error",
-									 JOptionPane.ERROR_MESSAGE);
-		System.exit(0);
-		return "-1";
-	}
-}
-
-function void show_result(JFrame frame,Result w)
-{
-	JOptionPane.showMessageDialog(frame,
-									 w.getResult(),
-									 "Result",
-									 JOptionPane.INFORMATION_MESSAGE);
-	System.exit(0);
-}
 

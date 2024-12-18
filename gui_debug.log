@@ -1,0 +1,6 @@
+<object-stream>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events/>
+</org.drools.core.audit.WorkingMemoryLog>
+</object-stream>
