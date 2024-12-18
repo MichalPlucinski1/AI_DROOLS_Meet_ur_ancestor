@@ -3,24 +3,19 @@ package com.sample;
 import org.kie.api.logger.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
-
-import javax.imageio.ImageIO;
 
 import org.kie.api.runtime.KieSession;
-
 
 public class UI {
 	
 	JFrame frame;
 	KieRuntimeLogger logger;
+	KieSession kSession;
 	
-	public UI(JFrame frame, KieRuntimeLogger logger) {
+	public UI(JFrame frame, KieSession kSession, KieRuntimeLogger logger) {
 		this.frame = frame;
 		this.logger = logger;
+		this.kSession = kSession;
 	};
 	
 		
@@ -86,6 +81,8 @@ public class UI {
             answerButton.addActionListener(e -> {
                 System.out.println("Selected: " + answer); // Debugging output
                 chosenAnswer[0] = answer;
+                this.kSession.insert(new Response(question, answer));
+                this.kSession.fireAllRules();
             });
 
             answersPanel.add(answerButton);
@@ -100,9 +97,12 @@ public class UI {
         this.frame.revalidate();
         this.frame.repaint();
         this.frame.setVisible(true);
-
+        
+        
         return chosenAnswer[0];
     };
+    
+    public void react() {}
     
     public static void resultScreen() {};
 }

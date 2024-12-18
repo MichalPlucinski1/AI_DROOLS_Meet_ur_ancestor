@@ -25,7 +25,7 @@ public class DroolsTest {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(600, 800); 
         	
-            UI ui = new UI(frame, kLogger);
+            UI ui = new UI(frame, kSession, kLogger);
 
         	kSession.setGlobal("ui", ui);
         	

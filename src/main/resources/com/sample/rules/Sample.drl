@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import java.awt.event.WindowEvent;
 import com.sample.UI;
 
+
 global UI ui;
 
 declare Knowledge
@@ -30,21 +31,12 @@ rule "init"
 		Knowledge k = new Knowledge("My favourite thing to do is", new String[]{"SWIM", "RUN", "MATE", "EAT", "SLEEP", "I don't understand this chart"});
 		
 		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
-		
-		System.out.println(res);
-		
-		Response r = new Response(k.getQuestion(), res);
-		
-		insert(r);
-		 
-		
 end
 
-rule "Q1"
+rule "Q1"	
 	when 
 		Response(question == "My favourite thing to do is", answer == "MATE")
 	then
-		System.out.println("dckxdkmcxm");
 		Knowledge k = new Knowledge("Hit it & Quit it ?", new String[]{"Yes", "No"});
 		
 		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
