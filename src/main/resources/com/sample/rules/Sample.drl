@@ -28,22 +28,240 @@ end
 rule "init"
 	when
 	then
-		Knowledge k = new Knowledge("My favourite thing to do is", new String[]{"SWIM", "RUN", "MATE", "EAT", "SLEEP", "I don't understand this chart"});
+		Knowledge k = new Knowledge("My favorite thing to do is", new String[]{"SWIM", "RUN", "MATE", "EAT", "SLEEP", "I don't understand this chart"});
 		
 		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
 end
 
 rule "Q1"	
 	when 
-		Response(question == "My favourite thing to do is", answer == "MATE")
+		Response(question == "My favorite thing to do is", answer == "MATE")
 	then
 		Knowledge k = new Knowledge("Hit it & Quit it ?", new String[]{"Yes", "No"});
-		
-		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
-		
-		Response r = new Response(k.getQuestion(), res);
-		
-		insert(r);
+		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());		
 end
 
+rule "Q_2"
+    when
+        Response(question == "My favorite thing to do is", answer == "RUN")
+    then
+        Knowledge k = new Knowledge("With Haste?", new String[]{"Yes", "No"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_3"
+    when
+        Response(question == "My favorite thing to do is", answer == "SWIM")
+    then
+        Knowledge k = new Knowledge("Where?", new String[]{"The Sand", "In the Shallows", "The Deep Blue Sea"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_4"
+    when
+        Response(question == "My favorite thing to do is", answer == "EAT")
+    then
+        Knowledge k = new Knowledge("Do you kill it?", new String[]{"Yes", "No"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_5"
+    when
+        Response(question == "My favorite thing to do is", answer == "SLEEP")
+    then
+        Knowledge k = new Knowledge("Are you cuddly?", new String[]{"Yes", "No"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "R_1"
+    when
+        Response(question == "Hit it & Quit it ?", answer == "Yes")
+    then
+        Result r = new Result("Feral Pigeon");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_2"
+    when
+        Response(question == "Hit it & Quit it ?", answer == "No")
+    then
+        Result r = new Result("Pygmy Seahorse");
+        ui.resultScreen(r.getResult());
+end
+
+rule "Q_8"
+    when
+        Response(question == "With Haste?", answer == "Yes")
+    then
+        Knowledge k = new Knowledge("How's your posture?", new String[]{"Quasimodo"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "R_3"
+    when
+        Response(question == "With Haste?", answer == "No")
+    then
+        Result r = new Result("Galapagos Tortoise");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_4"
+    when
+        Response(question == "Where?", answer == "The Sand")
+    then
+        Result r = new Result("Sidewalk Puddles");
+        ui.resultScreen(r.getResult());
+end
+
+rule "Q_11"
+    when
+        Response(question == "Where?", answer == "In the Shallows")
+    then
+        Knowledge k = new Knowledge("Rivers & Streams", new String[]{"Recreationally?", "Yes", "No"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_12"
+    when
+        Response(question == "Where?", answer == "The Deep Blue Sea")
+    then
+        Knowledge k = new Knowledge("Alone?", new String[]{"Yes", "No"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_13"
+    when
+        Response(question == "Do you kill it?", answer == "Yes")
+    then
+        Knowledge k = new Knowledge("How long does it take?", new String[]{"A Few Seconds", "Hours"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_14"
+    when
+        Response(question == "Do you kill it?", answer == "No")
+    then
+        Knowledge k = new Knowledge("Why Not?", new String[]{"'Cuz Someone Else Does"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_15"
+    when
+        Response(question == "Are you cuddly?", answer == "Yes")
+    then
+        Knowledge k = new Knowledge("Giant Squid", new String[]{"Appendages"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_16"
+    when
+        Response(question == "Are you cuddly?", answer == "No")
+    then
+        Knowledge k = new Knowledge("Transparent Jellyfish", new String[]{"'Cuz You Work the Graveyard Shift?"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "R_5"
+    when
+        Response(question == "How's your posture?", answer == "Quasimodo")
+    then
+        Result r = new Result("Silverback Gorilla");
+        ui.resultScreen(r.getResult());
+end
+
+rule "Q_18"
+    when
+        Response(question == "Alone?", answer == "Yes")
+    then
+        Knowledge k = new Knowledge("Are you scary?", new String[]{"Yes", "No"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_19"
+    when
+        Response(question == "Alone?", answer == "No")
+    then
+        Knowledge k = new Knowledge("French Angelfish", new String[]{"My Life Mate"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "Q_20"
+    when
+        Response(question == "Are you scary?", answer == "Yes")
+    then
+        Knowledge k = new Knowledge("Which do you have more of?", new String[]{"Teeth", "Appendages"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
+end
+
+rule "R_6"
+    when
+        Response(question == "Are you scary?", answer == "No")
+    then
+        Result r = new Result("Yellowtail Barracuda");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_7"
+    when
+        Response(question == "How long does it take?", answer == "A Few Seconds")
+    then
+        Result r = new Result("Saltwater Crocodile");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_8"
+    when
+        Response(question == "How long does it take?", answer == "Hours")
+    then
+        Result r = new Result("Brown Bat");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_9"
+    when
+        Response(question == "Recreationally?", answer == "Yes")
+    then
+        Result r = new Result("Red Piranha");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_10"
+    when
+        Response(question == "Recreationally?", answer == "No")
+    then
+        Result r = new Result("Bottlenose Dolphin");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_11"
+    when
+        Response(question == "Why Not?", answer == "'Cuz Someone Else Does")
+    then
+        Result r = new Result("Ruppell's Griffin Vulture");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_12"
+    when
+        Response(question == "'Cuz You Work the Graveyard Shift?", answer == "Yes")
+    then
+        Result r = new Result("Giant Squid");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_13"
+    when
+        Response(question == "Which do you have more of?", answer == "Teeth")
+    then
+        Result r = new Result("Viperfish");
+        ui.resultScreen(r.getResult());
+end
+
+rule "R_14"
+    when
+        Response(question == "Which do you have more of?", answer == "Appendages")
+    then
+        Result r = new Result("Giant Squid");
+        ui.resultScreen(r.getResult());
+end
 

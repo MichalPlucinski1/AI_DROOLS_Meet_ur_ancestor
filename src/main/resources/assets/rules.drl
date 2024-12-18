@@ -1,44 +1,9 @@
-
-package com.sample
-
-import javax.swing.JOptionPane;
-import javax.swing.JFrame;
-import java.awt.event.WindowEvent;
-import com.sample.UI;
-
-
-global UI ui;
-
-declare Knowledge
-	question : String
-	answers : String[]
-end
-
-declare Response
-	question : String
-	answer : String
-end
-
-declare Result
-	result : String
-end
-
-
-// Initialize program, show starting screen with begin button
-rule "init"
-	when
-	then
-		Knowledge k = new Knowledge("My favorite thing to do is", new String[]{"SWIM", "RUN", "MATE", "EAT", "SLEEP", "I don't understand this chart"});
-		
-		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
-end
-
-rule "Q1"	
-	when 
-		Response(question == "My favorite thing to do is", answer == "MATE")
-	then
-		Knowledge k = new Knowledge("Hit it & Quit it ?", new String[]{"Yes", "No"});
-		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());		
+rule "Q_1"
+    when
+        Response(question == "My favorite thing to do is", answer == "MATE")
+    then
+        Knowledge k = new Knowledge("Hit it & Quit it ?", new String[]{"Yes", "No"});
+        String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
 end
 
 rule "Q_2"
