@@ -28,7 +28,7 @@ end
 rule "init"
 	when
 	then
-		Knowledge k = new Knowledge("My favorite thing to do is", new String[]{"SWIM", "RUN", "MATE", "EAT", "SLEEP", "I don't understand this chart"});
+		Knowledge k = new Knowledge("", new String[]{"SWIM", "RUN", "MATE", "EAT", "SLEEP", "I don't understand this chart"});
 		
 		String res = ui.questionScreen(k.getQuestion(), k.getAnswers());
 end
