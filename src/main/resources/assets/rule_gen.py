@@ -1,18 +1,36 @@
 import re
 
+
+#     "I'm pretty quick": {
+#         "next_question": "Mostly indoors?",
+#         "answers": ["Yes", "No"],
+#     },
+#     "So fast I fly": {"next_question": "Literally?", "answers": ["Yes", "No"]},
+#     "Kidding, I walk.": {
+#         "next_question": "With Haste?",
+#         "answers": ["Yes", "No"],
+#     },
+# }
+
 # Data structure kindly provided by ChatGPT :)
 # Which is why it's not correct at all
 decision_tree = {
     "My favorite thing to do is": {
         "answers": {
             "MATE": {"next_question": "Hit it & Quit it ?", "answers": ["Yes", "No"]},
-            "RUN": {"next_question": "How fast?", "answers": ["Yes", "No"]},
+            "RUN": {
+                "next_question": "How fast?",
+                "answers": ["So fast I fly", "I'm pretty quick", "Kidding, I walk."],
+            },
             "SWIM": {
                 "next_question": "Where?",
                 "answers": ["The Sand", "In the Shallows", "The Deep Blue Sea"],
             },
             "EAT": {"next_question": "Do you kill it?", "answers": ["Yes", "No"]},
-            "SLEEP": {"next_question": "Are you cuddly?", "answers": ["Yes", "No"]},
+            "SLEEP": {
+                "next_question": "Cuz you work the graveyard shift?",
+                "answers": ["Yes", "No"],
+            },
             "I don't understand this chart": {
                 "next_question": "",
                 "answers": {
@@ -327,7 +345,7 @@ decision_tree = {
         }
     },
     # sleeping
-    "'Cuz you work the graveyard shift?": {
+    "Cuz you work the graveyard shift?": {
         "answers": {
             "Yes": {"next_question": "Brown Bat", "answers": []},
             "No": {

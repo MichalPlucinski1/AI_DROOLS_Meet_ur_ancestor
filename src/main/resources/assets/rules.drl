@@ -10,7 +10,7 @@ rule "Q_2"
     when
         Response(question == "My favorite thing to do is", answer == "RUN")
     then
-        Knowledge k = new Knowledge("How fast?", new String[]{"Yes", "No"});
+        Knowledge k = new Knowledge("How fast?", new String[]{"So fast I fly", "I'm pretty quick", "Kidding, I walk."});
         ui.questionScreen(k.getQuestion(), k.getAnswers());
 end
 
@@ -34,7 +34,7 @@ rule "Q_5"
     when
         Response(question == "My favorite thing to do is", answer == "SLEEP")
     then
-        Knowledge k = new Knowledge("Are you cuddly?", new String[]{"Yes", "No"});
+        Knowledge k = new Knowledge("Cuz you work the graveyard shift?", new String[]{"Yes", "No"});
         ui.questionScreen(k.getQuestion(), k.getAnswers());
 end
 
@@ -520,7 +520,7 @@ end
 
 rule "R_37"
     when
-        Response(question == "'Cuz you work the graveyard shift?", answer == "Yes")
+        Response(question == "Cuz you work the graveyard shift?", answer == "Yes")
     then
         Result r = new Result("Brown Bat");
         ui.resultScreen(r.getResult());
@@ -528,7 +528,7 @@ end
 
 rule "Q_67"
     when
-        Response(question == "'Cuz you work the graveyard shift?", answer == "No")
+        Response(question == "Cuz you work the graveyard shift?", answer == "No")
     then
         Knowledge k = new Knowledge("Are you cuddly?", new String[]{"My mother say I am", "People other than my mother say I am"});
         ui.questionScreen(k.getQuestion(), k.getAnswers());
